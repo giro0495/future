@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <div id="content">
+        <table id="assets">
+            <tr>
+                <td class="asset_name"><span>Name</span></td>
+                <td class="asset_value"><span>ast1</span></td>
+                <td class="asset_name"><span>Location</span></td>
+                <td class="asset_value"><span>Loc-1</span></td>
+            </tr>
+            <tr>
+                <td class="asset_name"><span>Name</span></td>
+                <td class="asset_value"><span>ast2</span></td>
+                <td class="asset_name"><span>Location</span></td>
+                <td class="asset_value"><span>Loc-2</span></td>
+            </tr>
+        </table>​
+    </div>
+    <script>
+        $('#assets').on('mouseover', 'span', function() {
+            var $e = $(this).parent();
+            if($e.attr('class') === 'asset_value') {
+                var val = $(this).html();
+                $e.html('<input type="text" value="'+val+'" />');
+                var $newE = $e.find('input');
+                $newE.focus();
+            }
+            $newE.on('blur', function() {
+                $(this).parent().html('<span>'+$(this).val()+'</span>');
+            });
+        });
+    </script>
+</body>
+</html>
